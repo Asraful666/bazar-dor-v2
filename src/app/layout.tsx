@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 import { Hind_Siliguri } from "next/font/google";
+import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import "./globals.css";
 
@@ -27,7 +29,21 @@ export default function RootLayout({
       <body
         className={`${banglaFont.variable} flex min-h-screen flex-col antialiased`}
       >
+        <Suspense
+          fallback={
+            <div
+              role="status"
+              className="h-36 animate-pulse bg-[#fafcfb]"
+            >
+              <span className="sr-only">ন্যাভবার লোড হচ্ছে...</span>
+            </div>
+          }
+        >
+          <Navbar />
+        </Suspense>
+
         <div className="flex-1">{children}</div>
+
         <Footer />
       </body>
     </html>
