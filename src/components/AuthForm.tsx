@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState, type FormEvent } from "react";
 import toast from "react-hot-toast";
 import { authClient } from "@/lib/auth-client";
+import SocialLoginButtons from "@/components/SocialLoginButtons";
 
 export default function AuthForm({
   mode,
@@ -234,6 +235,7 @@ export default function AuthForm({
                 : "সাইন ইন"}
           </button>
         </form>
+        <SocialLoginButtons />
 
         <p className="mt-6 text-center text-sm text-[#64756b]">
           {isSignup ? "আগেই অ্যাকাউন্ট আছে? " : "অ্যাকাউন্ট নেই? "}

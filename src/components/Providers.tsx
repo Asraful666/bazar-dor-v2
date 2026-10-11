@@ -1,13 +1,10 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { Suspense, type ReactNode } from "react";
 import { Toaster } from "react-hot-toast";
+import ProtectedRedirectNotice from "@/components/ProtectedRedirectNotice";
 
-export default function Providers({
-  children,
-}: {
-  children: ReactNode;
-}) {
+export default function Providers({ children }: { children: ReactNode }) {
   return (
     <>
       {children}
@@ -23,6 +20,10 @@ export default function Providers({
           },
         }}
       />
+
+      <Suspense fallback={null}>
+        <ProtectedRedirectNotice />
+      </Suspense>
     </>
   );
 }
